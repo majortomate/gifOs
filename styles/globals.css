@@ -5,6 +5,7 @@
 @layer base {
   html {
     font-family: 'Chakra Petch', sans-serif;
+    @apply bg-[#FEF4FE]
   }
 }
 
@@ -15,5 +16,14 @@
   .gifosBtn {
     @apply text-[#110038] bg-[#F7C9F3] border-[#110038] border py-2 px-4 hover:border-dashed mr-2;
     box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+  }
+  .gifosShadowWhite {
+    box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+  }
+  .gifosShadowBlack {
+    box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+  }
+  .gifosShadowPink {
+    box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #80687d;
   }
 }
