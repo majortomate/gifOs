@@ -1,26 +1,19 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   html {
-    color-scheme: dark;
+    font-family: 'Chakra Petch', sans-serif;
   }
-  body {
-    color: white;
-    background: black;
+}
+
+@layer components {
+  .gifosGradient {
+    background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+  }
+  .gifosBtn {
+    @apply text-[#110038] bg-[#F7C9F3] border-[#110038] border py-2 px-4 hover:border-dashed mr-2;
+    box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
   }
 }
