@@ -6,65 +6,46 @@ import GifList from '../components/GifList'
 import SearchBar from '../components/SearchBar'
 
 
-const Home: NextPage = () => {
+const Home: NextPage = () => {    
+const [gifs, setGifs] = useState<Array<Gif>>([])
 
-  interface gifsProps {
-    type: string,
-    id: string,
-    url: string,
-    slug: string,
-    bitly_gif_url: string,
-    bitly_url: string,
-    embed_url: string,
-    username: string,
-    source: string,
-    rating: string,
-    content_url: string,
-    source_tld: string,
-    source_post_url: string,
-    is_sticker: number,
-    import_datetime: string,
-    trending_datetime: string,
-    images: [Object],
-    user: [Object],
-    analytics_response_payload: string,
-    analytics: [Object]
+interface Gif {
+  analytics:{}
+  analytics_response_payload:{}
+  bitly_gif_url: string,
+  bitly_url: string,
+  content_url: string,
+  embed_url: string,
+  id: string,
+  images: {
+    downsized:{
+      url: string
+      }
   }
-  
-  
-const [gifs, setGifs] = useState({})
-
-type Gif = {
-  type: string,
-      id: string,
-      url: string,
-      slug: string,
-      bitly_gif_url: string,
-      bitly_url: string,
-      embed_url: string,
-      username: string,
-      source: string,
-      rating: string,
-      content_url: string,
-      source_tld: string,
-      source_post_url: string,
-      is_sticker: number,
-      import_datetime: string,
-      trending_datetime: string,
-      images: [Object],
-      user: [Object],
-      analytics_response_payload: string,
-      analytics: [Object]
+  import_datetime: string,
+  is_sticker: number,
+  rating: string,
+  slug: string,
+  source: string,
+  source_post_url: string,
+  source_tld:string,
+  title:string,
+  trending_datetime:string,
+  type:string,
+  url:string,
+  user: {},
+  username: string
 };
 
 type GetGifsResponse = {
-  gifs: Gif[];
+  data: Array<Gif>;
 }
 
 useEffect(() => {
   const getGifs = async () =>{
-    const response = await axios.get<GetGifsResponse>("https://api.giphy.com/v1/gifs/trending?&api_key=qvBbZNgISQYMs86HKrz6wN6xrPMKWxwp&limit=4&")
-    setGifs(response.data.gifs)
+    const response = await axios.get<GetGifsResponse>("https://api.giphy.com/v1/gifs/trending?&api_key=qvBbZNgISQYMs86HKrz6wN6xrPMKWxwp&limit=8&")
+    setGifs(response.data.data)
+    console.log(response)
   }
  getGifs()
 }, [])
