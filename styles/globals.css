@@ -5,7 +5,7 @@
 @layer base {
   html {
     font-family: 'Chakra Petch', sans-serif;
-    @apply bg-[#FEF4FE]
+    @apply bg-[#FEF4FE] dark:bg-[#110538]
   }
 }
 
@@ -13,8 +13,11 @@
   .gifosGradient {
     background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
   }
+  .gifosGradientDark {
+    background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+  }
   .gifosBtn {
-    @apply text-[#110038] bg-[#F7C9F3] border-[#110038] border py-2 px-4 hover:border-dashed mr-2;
+    @apply text-[#110038] dark:text-white bg-[#F7C9F3] dark:bg-[#EE3EFE] border-[#110038] border py-2 px-4 hover:border-dashed mr-2;
     box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
   }
   .gifosShadowWhite {

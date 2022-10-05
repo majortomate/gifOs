@@ -2,7 +2,7 @@
 function SearchBar() {
   return (
     <div className="bg-slate-100 lg:w-2/4 lg:mx-auto border mx-10 my-10">
-      <div className="gifosGradient gifosShadowWhite  p-2">
+      <div className="gifosGradient dark:gifosGradientDark gifosShadowWhite  p-2">
         <p className="text-white font-bold">Search</p>
       </div>
       <div className="p-5 grid grid-cols-4 gifosShadowWhite ">

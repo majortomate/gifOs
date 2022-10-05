@@ -2,7 +2,7 @@ function GifList() {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 py-5">
       <div className="col-span-1 border border-spacing-1">
-        <div className="gifosGradient gifosShadowWhite p-2">
+        <div className="gifosGradient gifosShadowWhite p-2 dark:gifosGradientDark">
           <p className="text-white text-sm">Season 1 Lol GIF by NBC</p>
         </div>
         <div>

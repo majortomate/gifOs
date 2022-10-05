@@ -3,8 +3,8 @@ import Link from "next/link"
 function Header() {
   return (
     <header>
-      <div className="gifosGradient mx-auto">
-        <p className="text-sm text-center py-2">Welcome to gifOs! ////// Visits so far: 12.765.803
+      <div className="gifosGradient dark:gifosGradientDark mx-auto">
+        <p className="text-sm text-center py-2 dark:text-white">Welcome to gifOs! ////// Visits so far: 12.765.803
         </p>
       </div>
       <div className="grid grid-cols-4 lg:grid-cols-4 items-center justify-items-center py-2 container mx-auto px-10">
