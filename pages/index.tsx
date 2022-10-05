@@ -3,11 +3,13 @@ import axios from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import GifList from '../components/GifList'
+import GifRecommendedList from '../components/GifRecommendedList'
 import SearchBar from '../components/SearchBar'
 
 
 const Home: NextPage = () => {    
 const [gifs, setGifs] = useState<Array<Gif>>([])
+const [gifsRecommended, setGifsRecommended] = useState<Array<Gif>>([])
 
 interface Gif {
   analytics:{}
@@ -50,6 +52,14 @@ useEffect(() => {
  getGifs()
 }, [])
 
+useEffect(() => {
+  const getGifsRecommended = async () =>{
+    const response = await axios.get<GetGifsResponse>("https://api.giphy.com/v1/gifs/search?&api_key=qvBbZNgISQYMs86HKrz6wN6xrPMKWxwp&limit=8&q=lol")
+    setGifsRecommended(response.data.data)
+    console.log(response)
+  }
+  getGifsRecommended()
+}, [])
 
   return (
     <div>
@@ -60,10 +70,16 @@ useEffect(() => {
       </Head>
       <SearchBar />
       <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-2 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
-      <div>
-      <h2>Today's recommendations:</h2>
+        <div>
+          <h2>Today's trendings:</h2>
+        </div>
+        <GifList gifs={gifs}/>
       </div>
-      <GifList gifs={gifs}/>
+      <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-2 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
+        <div>
+          <h2>Today's recommendations:</h2>
+        </div>
+        <GifRecommendedList gifsRecommended={gifsRecommended}/>
       </div>
     </div>
   )
