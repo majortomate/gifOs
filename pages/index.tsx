@@ -6,7 +6,6 @@ import GifList from '../components/GifList'
 import GifRecommendedList from '../components/GifRecommendedList'
 import SearchBar from '../components/SearchBar'
 
-
 const Home: NextPage = () => {    
 const [gifs, setGifs] = useState<Array<Gif>>([])
 const [gifsRecommended, setGifsRecommended] = useState<Array<Gif>>([])
@@ -42,21 +41,18 @@ interface Gif {
 type GetGifsResponse = {
   data: Array<Gif>;
 }
-
 useEffect(() => {
   const getGifs = async () =>{
-    const response = await axios.get<GetGifsResponse>("https://api.giphy.com/v1/gifs/trending?&api_key=qvBbZNgISQYMs86HKrz6wN6xrPMKWxwp&limit=8&")
+    const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_SUGGESTED)
     setGifs(response.data.data)
-    console.log(response)
   }
  getGifs()
 }, [])
 
 useEffect(() => {
   const getGifsRecommended = async () =>{
-    const response = await axios.get<GetGifsResponse>("https://api.giphy.com/v1/gifs/search?&api_key=qvBbZNgISQYMs86HKrz6wN6xrPMKWxwp&limit=8&q=lol")
+    const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_RECOMMENDED)
     setGifsRecommended(response.data.data)
-    console.log(response)
   }
   getGifsRecommended()
 }, [])
