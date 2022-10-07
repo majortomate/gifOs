@@ -13,7 +13,9 @@ function Header() {
         </Link>
         <ul className="flex col-span-3 lg:col-span-2 ml-auto font-chakra">
           <li className="gifosBtn">
-            <a href="">Crear gifOs</a>
+            <Link href="/createGif">
+              <a>Crear gifOs</a>
+            </Link>
           </li>
           <li className="gifosBtn">
             <a href="">Elegir Tema</a>
