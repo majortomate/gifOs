@@ -3,7 +3,7 @@
 
 ## GifOs
 
-GifOs is an small app for you to find gifs and also be able to create your own.
+GifOs is an small app for you to find gifs and also be able to create your own ones.
 
 ## Techs Used
 
