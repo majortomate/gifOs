@@ -1,10 +1,8 @@
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
-const VideoRecordingDialog = dynamic(() => import('../components/Recorder'), { ssr: false });
+const VideoRecordingDialog = dynamic(async () => await import('../components/Recorder'), { ssr: false })
 
-
-function CreateGif() {
-
+function CreateGif () {
   return (
    <div className='min-h-screen'>
     <Head>
@@ -22,4 +20,3 @@ function CreateGif() {
 }
 
 export default CreateGif
-

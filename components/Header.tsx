@@ -1,7 +1,7 @@
-import Link from "next/link"
-import ThemeToggler from "./ThemeToggler"
+import Link from 'next/link'
+import ThemeToggler from './ThemeToggler'
 
-function Header() {
+function Header () {
   return (
     <header>
       <div className="gifosGradient dark:gifosGradientDark mx-auto">
@@ -19,7 +19,7 @@ function Header() {
             </Link>
           </li>
           <li className="gifosBtnGray pb-0">
-            <a href="https://www.linkedin.com/in/majortomate/" target="_blank">Meet the Author</a>
+            <a href="https://www.linkedin.com/in/majortomate/" target="_blank" rel="noreferrer">Meet the Author</a>
           </li>
           <li className="gifosBtnGray pb-0">
             <ThemeToggler />

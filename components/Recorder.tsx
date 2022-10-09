@@ -1,11 +1,10 @@
-import {useState, useRef} from 'react'
+import { useState, useRef } from 'react'
 import RecordRTC from 'recordrtc'
-import axios, { AxiosResponse } from 'axios';
-import UploadSuccess from './UploadSuccess';
+import axios, { AxiosResponse } from 'axios'
+import UploadSuccess from './UploadSuccess'
 
-
-function Recorder() {
-  let recorder: any;
+function Recorder () {
+  let recorder: any
   const [startCamera, setStartCamera] = useState(false)
   const [recording, setRecording] = useState<any>(null)
   const [startRecording, setStartRecording] = useState(false)
@@ -13,60 +12,61 @@ function Recorder() {
   const [loading, setLoading] = useState(false)
   const [gifResponse, setGifResponse] = useState<AxiosResponse<any, any>>()
   const [stopRecording, setStopRecording] = useState(false)
-  const [saveblob, setSaveBlob] = useState<string | Blob>("")
+  const [saveblob, setSaveBlob] = useState<string | Blob>('')
   const [previewBlob, setPreviewBlob] = useState<any>()
   const ref = useRef<HTMLVideoElement | any>(null)
 
-const captureCamera = async (cb: any) => {
-  await navigator.mediaDevices.getUserMedia({audio:false, video:true})
-  .then(camera=> {cb(camera);
-  }).catch(error=> alert(error));
-}
-const handleStartCamera = () =>{
-  setStartCamera(true)
-  captureCamera((camera: MediaProvider | null) =>{
-    ref.current.srcObject = camera
-    ref.current.play()
-})
-}
+  const captureCamera = async (cb: any) => {
+    await navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+      .then(camera => {
+        cb(camera)
+      }).catch(error => alert(error))
+  }
+  const handleStartCamera = async () => {
+    setStartCamera(true)
+    await captureCamera((camera: MediaProvider | null) => {
+      ref.current.srcObject = camera
+      ref.current.play()
+    })
+  }
 
-const handleStartRecording = () =>{
- captureCamera((camera: HTMLVideoElement) =>{
-    ref.current.srcObject = camera
-    ref.current.play()
-    recorder = new RecordRTC(camera, { type: 'gif' })
-    recorder.startRecording();
-    recorder.camera = camera;
-    setRecording(recorder)
+  const handleStartRecording = async () => {
+    await captureCamera((camera: HTMLVideoElement) => {
+      ref.current.srcObject = camera
+      ref.current.play()
+      recorder = new RecordRTC(camera, { type: 'gif' })
+      recorder.startRecording()
+      recorder.camera = camera
+      setRecording(recorder)
     })
     setStartRecording(true)
-}
+  }
 
-const handleStopRecording = () => {
-  recording.stopRecording();
-  recording.camera.stop();
-  const blob = recording.getBlob();
-  console.log(blob)
-  setSaveBlob(blob)
-  setPreviewBlob(blob)
-  setStopRecording(true)
-}
+  const handleStopRecording = () => {
+    recording.stopRecording()
+    recording.camera.stop()
+    const blob = recording.getBlob()
+    console.log(blob)
+    setSaveBlob(blob)
+    setPreviewBlob(blob)
+    setStopRecording(true)
+  }
 
-const handleUploadGif = async () => {
+  const handleUploadGif = async () => {
     setLoading(true)
-    const formData = new FormData();
-    formData.append("file", saveblob, "giftoUpload");
+    const formData = new FormData()
+    formData.append('file', saveblob, 'giftoUpload')
     const response = await axios.post(process.env.NEXT_PUBLIC_GIPHY_UPLOAD, formData)
     setGifResponse(response.data)
     console.log(response.data)
     setUploading(true)
-}
+  }
   return (
     <>
 
     {
-      !startCamera ?
-      <div className="bg-slate-100 lg:w-2/4 lg:mx-auto border mx-10 my-10">
+      !startCamera
+        ? <div className="bg-slate-100 lg:w-2/4 lg:mx-auto border mx-10 my-10">
         <div className="gifosGradient dark:gifosGradientDark gifosShadowWhite  p-2">
           <p className="text-white font-bold font-chakra">Create Your Own Gif</p>
         </div>
@@ -84,7 +84,7 @@ const handleUploadGif = async () => {
             <br/>
             <strong>3)</strong> Check the moment
             <br/>
-            <strong>4)</strong> It's ready to upload and share!
+            <strong>4)</strong> It is ready to upload and share!
             <br/>
             <i>Do you wanna start now?</i>
           </p>
@@ -94,36 +94,35 @@ const handleUploadGif = async () => {
           </div>
         </div>
       </div>
-          :     
-          !stopRecording ?
-          <div className="bg-slate-100 lg:w-1/3 lg:mx-auto border mx-10 my-10">
+        : !stopRecording
+            ? <div className="bg-slate-100 lg:w-1/3 lg:mx-auto border mx-10 my-10">
           <div className="gifosGradient dark:gifosGradientDark gifosShadowWhite  p-2">
             <p className="text-white font-bold font-chakra">A Quick Check Before Start</p>
           </div>
           <div className="grid grid-cols-1 gifosShadowWhite p-10">
             <video ref={ref} src="" className='w-full'/>
             <div className='flex justify-end'>
-              <button onClick={!startRecording ?handleStartRecording : handleStopRecording} type='button' className={!startRecording ? "col-span-1 gifosBtn ml-2 mt-5" : "col-span-1 gifosBtnRed ml-2 mt-5"}>
-                {!startRecording ? "Start Recording" : "Stop Recording"}
+              <button onClick={!startRecording ? handleStartRecording : handleStopRecording} type='button' className={!startRecording ? 'col-span-1 gifosBtn ml-2 mt-5' : 'col-span-1 gifosBtnRed ml-2 mt-5'}>
+                {!startRecording ? 'Start Recording' : 'Stop Recording'}
               </button>
             </div>
           </div>
-        </div> :
-            !uploading ?
-            <div className="bg-slate-100 lg:w-1/3 lg:mx-auto border mx-10 my-10">
+        </div>
+            : !uploading
+                ? <div className="bg-slate-100 lg:w-1/3 lg:mx-auto border mx-10 my-10">
             <div className="gifosGradient dark:gifosGradientDark gifosShadowWhite  p-2">
-              <p className="text-white font-bold font-chakra">Here's the preview of your Gif</p>
+              <p className="text-white font-bold font-chakra">Here is the preview of your Gif</p>
             </div>
             <div className="grid grid-cols-1 gifosShadowWhite p-10">
-              <img src={URL.createObjectURL(previewBlob)}  alt="gif" className="w-full h-full"/>
+              <img src={URL.createObjectURL(previewBlob)} alt="gif" className="w-full h-full"/>
               <div className='flex justify-end'>
-              <button onClick={handleUploadGif} type='button' className="col-span-1 gifosBtn ml-2 mt-5" disabled={loading ? true : false}>
-                {!loading ? "Upload Gif" : "Uploading..."}
+              <button onClick={handleUploadGif} type='button' className="col-span-1 gifosBtn ml-2 mt-5" disabled={!!loading}>
+                {!loading ? 'Upload Gif' : 'Uploading...'}
               </button>
               </div>
             </div>
-          </div> :
-          <UploadSuccess previewBlob={previewBlob} gifResponse={gifResponse}/>
+          </div>
+                : <UploadSuccess previewBlob={previewBlob} gifResponse={gifResponse}/>
           }
     </>
   )

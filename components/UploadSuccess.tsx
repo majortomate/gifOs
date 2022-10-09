@@ -1,17 +1,21 @@
-import {invokeSaveAsDialog} from 'recordrtc'
-import {MouseEvent , useRef} from 'react'
+import { invokeSaveAsDialog } from 'recordrtc'
+import { MouseEvent, useRef } from 'react'
 
+interface Props {
+  previewBlob: Blob | File
+  gifResponse: any
+}
 
-function UploadSuccess({previewBlob, gifResponse}: any) {
+function UploadSuccess ({ previewBlob, gifResponse }: Props) {
   const ref = useRef<HTMLButtonElement | any>(null)
 
-  const  copyToClipboardEmbed = (e: MouseEvent<HTMLButtonElement>) => {
-    const urlToCopy = `https://giphy.com/gifs/${gifResponse.data.id}`
+  const copyToClipboardEmbed = async (e: MouseEvent<HTMLButtonElement>) => {
+    const urlToCopy: string = `https://giphy.com/gifs/${gifResponse.data.id}`
     e.preventDefault()
-    navigator.clipboard.writeText(urlToCopy)
+    await navigator.clipboard.writeText(urlToCopy)
   }
 
-  const handleDownload= (e: MouseEvent<HTMLButtonElement>) =>{
+  const handleDownload = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     invokeSaveAsDialog(previewBlob)
   }
