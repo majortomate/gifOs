@@ -6,41 +6,23 @@ import GifList from '../components/GifList'
 import GifRecommendedList from '../components/GifRecommendedList'
 import SearchBar from '../components/SearchBar'
 
-const Home: NextPage = () => {    
-const [gifs, setGifs] = useState<Array<Gif>>([])
-const [gifsRecommended, setGifsRecommended] = useState<Array<Gif>>([])
-
 interface Gif {
-  analytics:{}
-  analytics_response_payload:{}
-  bitly_gif_url: string,
-  bitly_url: string,
-  content_url: string,
-  embed_url: string,
   id: string,
   images: {
     downsized:{
       url: string
       }
   }
-  import_datetime: string,
-  is_sticker: number,
-  rating: string,
-  slug: string,
-  source: string,
-  source_post_url: string,
-  source_tld:string,
   title:string,
-  trending_datetime:string,
-  type:string,
-  url:string,
-  user: {},
-  username: string
 };
-
 type GetGifsResponse = {
   data: Array<Gif>;
 }
+
+const Home: NextPage = () => {    
+const [gifs, setGifs] = useState<Array<Gif>>([])
+const [gifsRecommended, setGifsRecommended] = useState<Array<Gif>>([])
+
 useEffect(() => {
   const getGifs = async () =>{
     const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_SUGGESTED)

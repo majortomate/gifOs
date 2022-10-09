@@ -20,9 +20,9 @@ function Header() {
           <li className="gifosBtn">
             <a href="">Elegir Tema</a>
           </li>
-          <li className="gifosBtn">
+         {/*  <li className="gifosBtn">
             <a href="">Mis gifOs</a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </header>
