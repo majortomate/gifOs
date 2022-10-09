@@ -7,37 +7,37 @@ import GifRecommendedList from '../components/GifRecommendedList'
 import SearchBar from '../components/SearchBar'
 
 interface Gif {
-  id: string,
+  id: string
   images: {
-    downsized:{
+    downsized: {
       url: string
-      }
+    }
   }
-  title:string,
+  title: string
 };
-type GetGifsResponse = {
-  data: Array<Gif>;
+interface GetGifsResponse {
+  data: Gif[]
 }
 
-const Home: NextPage = () => {    
-const [gifs, setGifs] = useState<Array<Gif>>([])
-const [gifsRecommended, setGifsRecommended] = useState<Array<Gif>>([])
+const Home: NextPage = () => {
+  const [gifs, setGifs] = useState<Gif[]>([])
+  const [gifsRecommended, setGifsRecommended] = useState<Gif[]>([])
 
-useEffect(() => {
-  const getGifs = async () =>{
-    const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_SUGGESTED)
-    setGifs(response.data.data)
-  }
- getGifs()
-}, [])
+  useEffect(() => {
+    const getGifs = async () => {
+      const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_SUGGESTED)
+      setGifs(response.data.data)
+    }
+    void getGifs()
+  }, [])
 
-useEffect(() => {
-  const getGifsRecommended = async () =>{
-    const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_RECOMMENDED)
-    setGifsRecommended(response.data.data)
-  }
-  getGifsRecommended()
-}, [])
+  useEffect(() => {
+    const getGifsRecommended = async () => {
+      const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_RECOMMENDED)
+      setGifsRecommended(response.data.data)
+    }
+    void getGifsRecommended()
+  }, [])
 
   return (
     <div>
@@ -49,13 +49,13 @@ useEffect(() => {
       <SearchBar />
       <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-10 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
         <div>
-          <h2 className='dark:text-[#110538]'>Today's trendings:</h2>
+          <h2 className='dark:text-[#110538]'>Todays trendings:</h2>
         </div>
         <GifList gifs={gifs}/>
       </div>
       <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-10 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
         <div>
-          <h2 className='dark:text-[#110538]'>Today's recommendations:</h2>
+          <h2 className='dark:text-[#110538]'>Todays recommendations:</h2>
         </div>
         <GifRecommendedList gifsRecommended={gifsRecommended}/>
       </div>

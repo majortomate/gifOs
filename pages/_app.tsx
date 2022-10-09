@@ -4,7 +4,7 @@ import { ThemeProvider } from 'next-themes'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp ({ Component, pageProps }: AppProps) {
   return (
     <>
     <ThemeProvider enableSystem attribute="class">

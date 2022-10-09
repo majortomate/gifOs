@@ -1,28 +1,28 @@
 interface Props {
   gifsRecommended: Array<{
-    id: string,
+    id: string
     images: {
-      downsized:{
+      downsized: {
         url: string
       }
     }
-    title:string,
+    title: string
   }>
 }
 
-function GifRecommendedList({gifsRecommended} : Props) {
+function GifRecommendedList ({ gifsRecommended }: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-5 gap-5">
-      {gifsRecommended ? gifsRecommended.map(gif => (
+      {gifsRecommended.map(gif => (
               <div className="col-span-1 border border-spacing-1" key={gif.id}>
               <div className="gifosGradient gifosShadowWhite p-2 dark:gifosGradientDark">
-                <p className="text-white text-sm">{`${gif.title.substring(0,25)}...`}</p>
+                <p className="text-white text-sm">{`${gif.title.substring(0, 25)}...`}</p>
               </div>
               <div className="w-full  h-full">
                 <img src={gif.images.downsized.url} alt="gif" className="w-full h-full"/>
               </div>
             </div>
-      )): null}
+      ))}
     </div>
   )
 }

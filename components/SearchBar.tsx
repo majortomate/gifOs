@@ -1,39 +1,38 @@
-import {useState, useRef} from 'react'
+import { useState, useRef } from 'react'
 import axios from 'axios'
 import useDebounce from '../hooks/useDebounce'
 import GifSearchList from './GifSearchList'
-function SearchBar() {
-  const [results, setResults] = useState<Array<Result>>([])
+function SearchBar () {
+  const [results, setResults] = useState<Result[]>([])
   const [query, setQuery] = useState('')
   const debounceSearch = useDebounce(query, 500)
-  const ref = useRef<HTMLInputElement>(null);
+  const ref = useRef<HTMLInputElement>(null)
 
   interface Result {
-    id:string,
-    title:string,
+    id: string
+    title: string
     images: {
-      downsized:{
+      downsized: {
         url: string
-        }
+      }
     }
   }
 
-  type GetResultsResponse = {
-    data: Array<Result>;
+  interface GetResultsResponse {
+    data: Result[]
   }
-  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) =>{
+  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value)
   }
 
-  
-  const clickHandler = async () =>{
+  const clickHandler = async () => {
     const response = await axios.get<GetResultsResponse>(`${process.env.NEXT_PUBLIC_GIPHY_SEARCH}${debounceSearch}`)
-      setResults(response.data.data)
-      if (ref.current != null) {
-        ref.current.value = '';
-      }
+    setResults(response.data.data)
+    if (ref.current != null) {
+      ref.current.value = ''
+    }
   }
-  
+
   return (
     <>
       <div className="bg-slate-100 lg:w-2/4 lg:mx-auto border mx-10 my-10">
@@ -52,13 +51,14 @@ function SearchBar() {
           </button>
         </div>
       </div>
-    {results.length > 1 ?
-        <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-10 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
+    {results.length > 1
+      ? <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-10 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
         <h2 className='dark:text-[#110538]'>
           Search Results:
         </h2>
         <GifSearchList results={results}/>
-    </div> : null  
+    </div>
+      : null
   }
     </>
   )
