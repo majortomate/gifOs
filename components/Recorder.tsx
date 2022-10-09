@@ -56,7 +56,7 @@ function Recorder () {
     setLoading(true)
     const formData = new FormData()
     formData.append('file', saveblob, 'giftoUpload')
-    const response = await axios.post('https://upload.giphy.com/v1/gifs?api_key=qvBbZNgISQYMs86HKrz6wN6xrPMKWxwp', formData)
+    const response = await axios.post(process.env.NEXT_PUBLIC_GIPHY_UPLOAD ?? '', formData)
     setGifResponse(response.data)
     console.log(response.data)
     setUploading(true)
