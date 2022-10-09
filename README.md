@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![image](https://user-images.githubusercontent.com/56098988/194778507-d901d00d-236f-43fb-95c5-43ef69c94da5.png)
 
-## Getting Started
 
-First, run the development server:
+## GifOs
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+GifOs is an small app for you to find gifs and also be able to create your own.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Techs Used
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+This project was built with Next.Js and Typescript:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- React.
+- Next.Js framework.
+- For styling Tailwind CSS.
+- Native mediaDevices and RecordTRC for recording the Gifs.
+- Giphy API.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- User can search a gif by typing any query on search input.
+- User can check today's trending gifs.
+- User can check today's recommendations gifs.
+- User can create his own gif by using his own camera.
+- User can copy and download the gif created.
+- User can switch to dark mode (web also switches automatically at night).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![image](https://user-images.githubusercontent.com/56098988/194778663-4b946450-67fb-4cbc-953b-00841afce7c4.png)
