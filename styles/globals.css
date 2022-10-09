@@ -4,7 +4,10 @@
 
 @layer base {
   html {
-    @apply bg-[#FEF4FE] dark:bg-[#110538]
+    @apply bg-[#FEF4FE] dark:bg-[#110538];
+  }
+  body {
+    @apply bg-[#FEF4FE] dark:bg-[#110538];
   }
 }
 
