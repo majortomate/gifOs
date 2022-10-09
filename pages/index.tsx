@@ -25,7 +25,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     const getGifs = async () => {
-      const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_SUGGESTED)
+      const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_SUGGESTED ?? '')
       setGifs(response.data.data)
     }
     void getGifs()
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     const getGifsRecommended = async () => {
-      const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_RECOMMENDED)
+      const response = await axios.get<GetGifsResponse>(process.env.NEXT_PUBLIC_GIPHY_RECOMMENDED ?? '')
       setGifsRecommended(response.data.data)
     }
     void getGifsRecommended()
