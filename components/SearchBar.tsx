@@ -41,13 +41,20 @@ function SearchBar() {
           <p className="text-white font-bold">Search</p>
         </div>
         <div className="p-5 grid grid-cols-4 gifosShadowWhite">
-          <input onChange={searchHandler} ref={ref} type="search" name="" id="" placeholder="Search gifs with hashtags, themes, anything you want..." className="col-span-3 p-2 gifosShadowBlack" />
-          <button onClick={clickHandler} type='button' className="col-span-1 gifosBtn ml-2">Search</button>
+          <input onChange={searchHandler} ref={ref} type="search" name="" id="" placeholder="Search gifs with hashtags, themes, anything you want..." className="col-span-3 p-2 gifosShadowBlack dark:bg-white dark:text-black" />
+          <button onClick={clickHandler} type='button' className="col-span-1 gifosBtn ml-2 flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <circle cx="10" cy="10" r="7"></circle>
+            <line x1="21" y1="21" x2="15" y2="15"></line>
+          </svg>
+            Search
+          </button>
         </div>
       </div>
     {results.length > 1 ?
-        <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-2 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
-        <h2>
+        <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-10 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
+        <h2 className='dark:text-[#110538]'>
           Search Results:
         </h2>
         <GifSearchList results={results}/>

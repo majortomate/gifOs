@@ -45,20 +45,17 @@ useEffect(() => {
         <title>Welcome to gifOs</title>
         <meta name="description" content="gifOs is successfully built on NextJs with Typescript" />
         <link rel="icon" href="https://res.cloudinary.com/knowhere/image/upload/v1664807435/gifOs/static/favicon_ce2lwj.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&display=swap" rel="stylesheet"/>
       </Head>
       <SearchBar />
-      <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-2 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
+      <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-10 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
         <div>
-          <h2>Today's trendings:</h2>
+          <h2 className='dark:text-[#110538]'>Today's trendings:</h2>
         </div>
         <GifList gifs={gifs}/>
       </div>
-      <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-2 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
+      <div className='lg:container mx-10 lg:w-2/4 lg:mx-auto my-10 py-10 px-10 bg-white gifosShadowPink border border-[#E6BBE2]'>
         <div>
-          <h2>Today's recommendations:</h2>
+          <h2 className='dark:text-[#110538]'>Today's recommendations:</h2>
         </div>
         <GifRecommendedList gifsRecommended={gifsRecommended}/>
       </div>

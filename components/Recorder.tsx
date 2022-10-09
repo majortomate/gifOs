@@ -72,10 +72,10 @@ const handleUploadGif = async () => {
         </div>
         <div className="p-10 grid grid-cols-1 gifosShadowWhite">
           <div className='flex justify-center py-10'>
-            <img className='pr-5' src="https://res.cloudinary.com/knowhere/image/upload/v1665156783/gifOs/static/windowimg_rru0ue.png" alt="windowimg" />
-            <h1 className='font-bold text-black dark:text-white text-3xl font-chakra'>Here you will be able to create your own gifs</h1>
+            <img className='pr-5 h-10' src="https://res.cloudinary.com/knowhere/image/upload/v1665156783/gifOs/static/windowimg_rru0ue.png" alt="windowimg" />
+            <h1 className='font-bold text-black dark:text-[#110538] text-3xl font-chakra'>Here you will be able to create your own gifs</h1>
           </div>
-          <p className='leading-10 font-chakra'>
+          <p className='leading-10 font-chakra dark:text-[#110538]'>
           Creating your Gif is very easy, record any image with your camera and get personalized Gif. The steps to create your Gif are:
             <br/>
             <strong>1)</strong> Give access permissions to the camera (only for the time of use)
