@@ -9,7 +9,7 @@ function ThemeToggler () {
   return (
     <button
       type="button"
-      className="text-white gifosBtntransition-all duration-300"
+      className="text-white transition-all duration-300"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       aria-label="Toggle Dark Mode"
     >

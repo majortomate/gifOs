@@ -41,7 +41,7 @@ function SearchBar () {
         </div>
         <div className="p-5 grid grid-cols-4 gifosShadowWhite">
           <input onChange={searchHandler} ref={ref} type="search" name="" id="" placeholder="Search gifs with hashtags, themes, anything you want..." className="col-span-3 p-2 gifosShadowBlack dark:bg-white dark:text-black" />
-          <button onClick={clickHandler} type='button' className="col-span-1 gifosBtn ml-2 flex justify-center">
+          <button onClick={clickHandler} type='button' className="col-span-1 gifosBtn ml-2 flex justify-center text-sm lg:text-base">
             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <circle cx="10" cy="10" r="7"></circle>
